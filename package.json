@@ -1,8 +1,8 @@
 {
   "name": "sygna-hub-toolkit",
   "version": "0.0.1",
-  "description": "A Quasar Project",
-  "productName": "Quasar App",
+  "description": "A toolkit for Sygna Hub",
+  "productName": "Sygna Hub toolkit",
   "author": "yuweiwei <yuweiwei.ouo@gmail.com>",
   "private": true,
   "scripts": {
