@@ -5,14 +5,14 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/GeneratorPage.vue') },
+      { path: '', component: () => import('pages/ConfigPage.vue') },
     ],
   },
   {
-    path: '/generator',
+    path: '/config',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/GeneratorPage.vue') },
+      { path: '', component: () => import('pages/ConfigPage.vue') },
     ],
   },
 
