@@ -37,11 +37,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { useConfigPageStore } from 'src/stores/pages/config';
-import _ from 'lodash';
 import { reactive } from 'vue';
-import { useNotify } from 'src/composables/Notify';
 
-const notify = useNotify();
 const configStore = useConfigPageStore();
 const { isSettingDialogOpen } = storeToRefs(configStore);
 const setting = reactive({ ...configStore.setting });

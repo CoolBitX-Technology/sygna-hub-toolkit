@@ -3,8 +3,8 @@ export function randomInRange(min: number, max: number) {
 }
 
 export function generatePassword(length: number, symbol: boolean) {
-  let password = "";
-  let possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let password = '';
+  let possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   if (symbol) {
     possibleCharacters += "!@#$%^&*()_+-=[]{}|;'\"<>,.?/\\`~";
   }

@@ -37,7 +37,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import ConfigSidebar from 'src/components/config/ConfigSidebar.vue';
 import { useConfigPageStore } from 'src/stores/pages/config';
 import AdminPanel from 'src/components/config/panels/AdminPanel.vue';
 import AdvancedPanel from 'src/components/config/panels/AdvancedPanel.vue';

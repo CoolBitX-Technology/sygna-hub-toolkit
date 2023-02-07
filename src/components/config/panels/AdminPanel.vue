@@ -1,5 +1,6 @@
 <template>
-  <div class="text-h4 q-mb-md">Administrator</div>
+  <div class="title text-h4 q-mb-md">Administrator</div>
+  <p>This is setup for your initial account to the hub</p>
   <div>
     <q-input
       clearable
@@ -8,8 +9,9 @@
       name="admin.account"
       :rules="[validate.notEmpty]"
     />
-    <SecretField
+    <DataField
       clearable
+      type="password"
       label="Password *"
       v-model="formData.admin.password"
       name="admin.password"
@@ -28,7 +30,7 @@
 import { useConfigPageStore } from 'src/stores/pages/config';
 import { storeToRefs } from 'pinia';
 import { useValidate } from 'src/composables/Validate';
-import SecretField from 'src/components/common/form/SecretField.vue';
+import DataField from 'src/components/common/form/DataField.vue';
 const configpageStore = useConfigPageStore();
 const validate = useValidate();
 const { formData } = storeToRefs(configpageStore);

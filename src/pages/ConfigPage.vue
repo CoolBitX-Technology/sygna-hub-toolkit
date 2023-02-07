@@ -54,7 +54,7 @@ import { useNotify } from 'src/composables/Notify';
 import ConfigForm from 'src/components/config/ConfigForm.vue';
 import SettingDialog from 'src/components/config/SettingDialog.vue';
 import { ConfigFile } from 'src/models';
-import { ref, Component, ComputedOptions, MethodOptions } from 'vue';
+import { ref, Component } from 'vue';
 import { copyToClipboard, exportFile, QForm, LocalStorage } from 'quasar';
 import { storeToRefs } from 'pinia';
 import { useConfigPageStore } from 'src/stores/pages/config';
@@ -80,9 +80,7 @@ const { resetForm } = configPageStore;
 const { isSettingDialogOpen, currTab, formData, setting } =
   storeToRefs(configPageStore);
 
-function onFormError(
-  ref: Component<any, any, any, ComputedOptions, MethodOptions>
-) {
+function onFormError(ref: Component) {
   currTab.value = ref.name?.split('.')[0] || 'registration';
 }
 
@@ -137,7 +135,7 @@ function getBundleProductConfigContent() {
     ? `${formData.value.server.frontend.scheme}://${formData.value.server.frontend.domainName}:${formData.value.server.frontend.port}`
     : '';
   const backendURL = `${formData.value.server.backend.scheme}://${formData.value.server.backend.domainName}:${formData.value.server.backend.port}`;
-  const configData: Record<string, any> = {
+  const configData: Record<string, unknown> = {
     settings: {
       vasp_code: formData.value.registration.vaspCode,
       license_key: formData.value.registration.apiKey,
@@ -205,7 +203,7 @@ function getDockerConfigContent() {
     default:
       sygnaImageVersion = '';
   }
-  const configData: Record<string, any> = {
+  const configData: Record<string, unknown> = {
     version: '2.1',
     services: {
       backend: {

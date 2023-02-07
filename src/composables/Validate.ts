@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 function notEmpty(val: unknown) {
   return !!val || 'Field is required';
 }

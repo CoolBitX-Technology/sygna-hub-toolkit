@@ -1,6 +1,5 @@
 <template>
-  <div class="text-h4 q-mb-md">Database</div>
-  <p>設定您的資料庫</p>
+  <div class="title text-h4 q-mb-md">Database</div>
   <div>
     <q-select
       :options="driverOptions"
@@ -16,14 +15,14 @@
       name="database.host"
       :rules="[validate.notEmpty]"
     />
-    <q-input
+    <DataField
       clearable
       label="Port *"
       v-model.number="formData.database.port"
       name="database.port"
       type="number"
       :rules="[validate.notEmpty]"
-      :hint="`Usually ${suggestedPort}`"
+      :placeholder="`Usually set to ${suggestedPort} with ${formData.database.driver} `"
     />
     <q-input
       clearable
@@ -32,8 +31,9 @@
       name="database.user"
       :rules="[validate.notEmpty]"
     />
-    <SecretField
+    <DataField
       clearable
+      type="password"
       label="Password *"
       v-model="formData.database.password"
       name="database.password"
@@ -59,7 +59,7 @@ import { useConfigPageStore } from 'src/stores/pages/config';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
 import { useValidate } from 'src/composables/Validate';
-import SecretField from 'src/components/common/form/SecretField.vue';
+import DataField from 'src/components/common/form/DataField.vue';
 const validate = useValidate();
 const configpageStore = useConfigPageStore();
 const { formData } = storeToRefs(configpageStore);

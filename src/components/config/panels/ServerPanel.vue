@@ -1,5 +1,6 @@
 <template>
-  <div class="text-h4 q-mb-md">Server Info</div>
+  <div class="title text-h4 q-mb-md">Server Info</div>
+  <p>Please fill up your public host for your server</p>
   <div v-if="setting.enableWebConsole">
     <div class="text-h5 q-mb-md">Frontend</div>
     <div class="row justify-start">

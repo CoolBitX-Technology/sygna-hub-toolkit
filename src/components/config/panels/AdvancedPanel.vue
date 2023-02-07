@@ -1,5 +1,5 @@
 <template>
-  <div class="text-h4 q-mb-md">Advanced</div>
+  <div class="title text-h4 q-mb-md">Advanced</div>
   <div>
     <q-input
       clearable

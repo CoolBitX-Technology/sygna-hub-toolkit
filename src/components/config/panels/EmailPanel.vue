@@ -1,15 +1,14 @@
 <template>
-  <div class="text-h4 q-mb-md">Email</div>
-  <p>設定您的發信伺服器</p>
+  <div class="title text-h4 q-mb-md">Email</div>
   <div>
-    <q-input
+    <DataField
       clearable
       label="Host *"
       v-model="formData.email.host"
       name="email.host"
       :rules="[validate.notEmpty]"
     />
-    <q-input
+    <DataField
       clearable
       label="Port *"
       v-model.number="formData.email.port"
@@ -17,27 +16,28 @@
       type="number"
       :rules="[validate.notEmpty]"
     />
-    <q-input
+    <DataField
       clearable
       label="Account *"
       v-model="formData.email.account"
       name="email.account"
       :rules="[validate.notEmpty]"
     />
-    <SecretField
+    <DataField
       clearable
+      type="password"
       label="Password *"
       v-model="formData.email.password"
       name="email.password"
       :rules="[validate.notEmpty]"
     />
-    <q-input
+    <DataField
       clearable
       label="Display Name"
       v-model="formData.email.displayName"
       name="email.displayName"
     />
-    <q-input
+    <DataField
       clearable
       label="Subject Prefix"
       v-model="formData.email.subjectPrefix"
@@ -55,7 +55,7 @@
 import { useConfigPageStore } from 'src/stores/pages/config';
 import { storeToRefs } from 'pinia';
 import { useValidate } from 'src/composables/Validate';
-import SecretField from 'src/components/common/form/SecretField.vue';
+import DataField from 'src/components/common/form/DataField.vue';
 const configpageStore = useConfigPageStore();
 const validate = useValidate();
 const { formData } = storeToRefs(configpageStore);
