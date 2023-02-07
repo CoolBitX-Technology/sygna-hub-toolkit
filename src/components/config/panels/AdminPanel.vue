@@ -15,7 +15,8 @@
       label="Password *"
       v-model="formData.admin.password"
       name="admin.password"
-      :rules="[validate.notEmpty]"
+      :rules="[validate.notEmpty, validate.isStrongPassword]"
+      hint="Password should contain at least 6 letters, at least 1 number, at least 1 upper case and at least 1 special character"
     />
   </div>
 </template>

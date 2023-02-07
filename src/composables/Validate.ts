@@ -20,6 +20,11 @@ function isHost(val: string) {
   return 'This is not valid host'
 }
 
+function isStrongPassword(val: string) {
+  const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
+  return !!regex.exec(val) || 'Should contain at least 6 letters, at least 1 number, at least 1 upper case and at least 1 special character';
+}
+
 export const useValidate = () => {
-  return { notEmpty, isHost };
+  return { notEmpty, isHost, isStrongPassword };
 };

@@ -15,9 +15,12 @@
     clearable
     type="password"
     label="API key (license key) *"
-    :rules="[validate.notEmpty]"
+    :rules="[
+      validate.notEmpty,
+      (val) => val.length === 64 || 'Must be 64 characters'
+    ]"
     v-model="formData.registration.apiKey"
-    :maxlength="32"
+    :maxlength="64"
     name="registration.apiKey"
   />
 </template>
