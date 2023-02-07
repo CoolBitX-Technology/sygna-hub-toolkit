@@ -237,6 +237,19 @@ function getDockerConfigContent() {
       ],
       volumes: ['./db:/var/lib/postgresql/data']
     };
+  } else if (formData.value.database.driver === 'mysql') {
+    configData.services.mysql = {
+      image: 'mysql:8.0.29',
+      restart: 'unless-stopped',
+      ports: [`${formData.value.database.port}:3306`],
+      environment: [
+        `MYSQL_ROOT_PASSWORD=${formData.value.database.password}`,
+        `MYSQL_DATABASE=${formData.value.database.name}`,
+        `MYSQL_USER=${formData.value.database.user}`,
+        `MYSQL_PASSWORD=${formData.value.database.password}`
+      ],
+      volumes: ['./docker-data/mysql:/var/lib/mysql']
+    };
   }
 
   return dump(configData, {
