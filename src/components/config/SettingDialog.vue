@@ -18,16 +18,17 @@
           v-model="setting.enableWebConsole"
           label="Enable Web Console"
         />
-        <q-toggle v-model="setting.enableTRISA" label="Enable TRISA" />
+        <q-toggle v-model="setting.enableTRISA" label="Enable TRISA" disable />
         <q-toggle
           v-model="setting.enableShyft"
           label="Enable Veriscope on Shyft"
+          disable
         />
       </q-card-section>
 
       <q-card-actions align="right">
-        <q-btn label="Cancel" v-close-popup @click="handleCancel" />
-        <q-btn label="Save" color="primary" @click="handleSave" />
+        <q-btn label="Cancel" v-close-popup @click="onCancel" />
+        <q-btn label="Save" color="primary" @click="onSave" />
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -45,14 +46,13 @@ const configStore = useConfigPageStore();
 const { isSettingDialogOpen } = storeToRefs(configStore);
 const setting = reactive({ ...configStore.setting });
 const imagesEnvOptions = ['prod', 'test'];
-function handleSave() {
+function onSave() {
   configStore.$patch({
     setting: { ...setting }
   });
   isSettingDialogOpen.value = false;
-  notify.success('Saved');
 }
-function handleCancel() {
+function onCancel() {
   Object.assign(setting, { ...configStore.setting });
 }
 </script>

@@ -3,8 +3,9 @@
   <div>
     <q-input
       clearable
-      label="Webhook URL *"
+      label="Webhook URL"
       v-model="formData.advanced.webhookURL"
+      name="advanced.webhookURL"
     />
   </div>
 </template>

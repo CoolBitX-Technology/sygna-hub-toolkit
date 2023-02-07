@@ -1,6 +1,6 @@
-# Quasar App (hub-config-generator)
+# Sygna hub toolkit
 
-A Quasar Project
+This is a toolkit for hub user.
 
 ## Install the dependencies
 ```bash

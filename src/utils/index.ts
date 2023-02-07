@@ -1,17 +1,17 @@
-import _ from 'lodash';
+export function randomInRange(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
 
-export const toSnakeCase = (obj: object): object => {
-  const obj2 = _.cloneDeep(obj);
-  if (Array.isArray(obj2)) {
-    return obj2.map(v => toSnakeCase(v));
-  } else if (obj2 != null && obj2.constructor === Object) {
-    return Object.keys(obj2).reduce(
-      (result, key) => ({
-        ...result,
-        [_.snakeCase(key)]: toSnakeCase(obj2[key]),
-      }),
-      {},
-    );
+export function generatePassword(length: number, symbol: boolean) {
+  let password = "";
+  let possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  if (symbol) {
+    possibleCharacters += "!@#$%^&*()_+-=[]{}|;'\"<>,.?/\\`~";
   }
-  return obj2;
-};
+
+  for (let i = 0; i < length; i++) {
+    password += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  }
+
+  return password;
+}

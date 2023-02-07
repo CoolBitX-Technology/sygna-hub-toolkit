@@ -1,8 +1,20 @@
 <template>
   <div class="text-h4 q-mb-md">Administrator</div>
   <div>
-    <q-input clearable label="Account *" v-model="formData.admin.account" />
-    <q-input clearable label="Password *" v-model="formData.admin.password" />
+    <q-input
+      clearable
+      label="Account *"
+      v-model="formData.admin.account"
+      name="admin.account"
+      :rules="[validate.notEmpty]"
+    />
+    <SecretField
+      clearable
+      label="Password *"
+      v-model="formData.admin.password"
+      name="admin.password"
+      :rules="[validate.notEmpty]"
+    />
   </div>
 </template>
 
@@ -15,7 +27,9 @@
 <script setup lang="ts">
 import { useConfigPageStore } from 'src/stores/pages/config';
 import { storeToRefs } from 'pinia';
-import { computed } from 'vue';
+import { useValidate } from 'src/composables/Validate';
+import SecretField from 'src/components/common/form/SecretField.vue';
 const configpageStore = useConfigPageStore();
+const validate = useValidate();
 const { formData } = storeToRefs(configpageStore);
 </script>

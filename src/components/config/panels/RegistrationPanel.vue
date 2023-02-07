@@ -4,17 +4,17 @@
   <q-input
     clearable
     label="VASP code *"
-    hint="通常是8個字元"
+    hint="Usually 8 characters"
     :rules="[validate.notEmpty]"
-    label-color="black"
     v-model="formData.registration.vaspCode"
+    name="registration.vaspCode"
   />
-  <q-input
+  <SecretField
     clearable
     label="API key (license key) *"
-    label-color="black"
     :rules="[validate.notEmpty]"
     v-model="formData.registration.apiKey"
+    name="registration.apiKey"
   />
 </template>
 <style scoped>
@@ -27,6 +27,7 @@
 import { useConfigPageStore } from 'src/stores/pages/config';
 import { storeToRefs } from 'pinia';
 import { useValidate } from 'src/composables/Validate';
+import SecretField from 'src/components/common/form/SecretField.vue';
 const validate = useValidate();
 const configpageStore = useConfigPageStore();
 const { formData } = storeToRefs(configpageStore);
