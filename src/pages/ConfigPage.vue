@@ -135,7 +135,7 @@ function getBundleProductConfigContent() {
     ? `${formData.value.server.frontend.scheme}://${formData.value.server.frontend.domainName}:${formData.value.server.frontend.port}`
     : '';
   const backendURL = `${formData.value.server.backend.scheme}://${formData.value.server.backend.domainName}:${formData.value.server.backend.port}`;
-  const configData: Record<string, unknown> = {
+  const configData: Record<string, any> = {
     settings: {
       vasp_code: formData.value.registration.vaspCode,
       license_key: formData.value.registration.apiKey,
@@ -203,7 +203,7 @@ function getDockerConfigContent() {
     default:
       sygnaImageVersion = '';
   }
-  const configData: Record<string, unknown> = {
+  const configData: Record<string, any> = {
     version: '2.1',
     services: {
       backend: {
