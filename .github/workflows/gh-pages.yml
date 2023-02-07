@@ -1,0 +1,40 @@
+name: Github Page
+
+on:
+  push:
+    branches:
+      - master  # Set a branch to deploy
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Cache npm
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-${{ env.prefix }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-${{ env.prefix }}-
+
+      - name: Setup Node.js
+        uses: actions/setup-node@main
+        with:
+          node-version: "16.19.0"
+          registry-url: "https://npm.pkg.github.com"
+
+      # - name: Set Domain
+      #   run: |
+      #     cp ./CNAME ./public/CNAME
+      #     echo Domain 設置為 $(cat ./public/CNAME)
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          public_branch: gh-pages  # 推送到 gh-pages 分支
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/spa
